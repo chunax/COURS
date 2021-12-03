@@ -44,7 +44,6 @@ def get_resp(key,ip,port):
         send(jsonFrame, ip, port)
 
 def is_between(key):
-    #TODO
     if table_voisinage["precedent"][0] > my_key:
         if key > table_voisinage["precedent"][0] or key < my_key:
             return True
@@ -52,6 +51,17 @@ def is_between(key):
             return False
     else:
         if key > table_voisinage["precedent"][0] and key < my_key:
+            return True
+        else:
+            return False
+def is_between_suivant(key):
+    if table_voisinage["suivant"][0] < my_key:
+        if key < table_voisinage["suivant"][0] or key > my_key:
+            return True
+        else:
+            return False
+    else:
+        if key < table_voisinage["suivant"][0] and key > my_key:
             return True
         else:
             return False
@@ -75,7 +85,6 @@ def gestionJoin(payload):
         jsonFrame = { "type" : "reject", "key" : payload["key"] }
         send(jsonFrame, payload["ip"], payload["port"])
     elif is_between(payload["key"]) or is_first:
-        is_first = False
         print("accept et init")
         # jsonFrame = { "type" : "accept", "key" : payload["key"] }
         # send(jsonFrame, payload["ip"], payload["port"])
@@ -83,9 +92,15 @@ def gestionJoin(payload):
         new_table_voisinage = {"precedent" : table_voisinage["precedent"], "suivant" : [my_key, my_ip, my_port]}
         print(new_table_voisinage)
         jsonInitFrame = { "type" : "init", "key" : payload["key"], "data" : new_data_table, "tv": new_table_voisinage }
-        table_voisinage["precedent"] = [payload["key"], payload["ip"], payload["port"]]
+        if is_first:
+            table_voisinage["precedent"] = [payload["key"], payload["ip"], payload["port"]]
+            table_voisinage["suivant"] = [payload["key"], payload["ip"], payload["port"]]
+        else:
+            table_voisinage["precedent"] = [
+                payload["key"], payload["ip"], payload["port"]]
         print("ma table")
         print(table_voisinage)
+        is_first = False
         send(jsonInitFrame, payload["ip"], payload["port"])
 
     else:
@@ -134,6 +149,25 @@ def gestionGet(payload):
         send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
 
     
+def gestionNew(payload):
+    if is_between_suivant(payload["key"]):
+        tmp_suivant = table_voisinage["suivant"]
+        table_voisinage["suivant"][0] = payload["key"]
+        table_voisinage["suivant"][1] = payload["ip"]
+        table_voisinage["suivant"][2] = payload["port"]
+        send(payload, tmp_suivant[1], tmp_suivant[2])
+    elif is_between(payload["key"]):
+        table_voisinage["precedent"][0] = payload["key"]
+        table_voisinage["precedent"][1] = payload["ip"]
+        table_voisinage["precedent"][2] = payload["port"]
+        send(payload, table_voisinage["suivant"][1], table_voisinage["suivant"][2])
+    elif payload["key"] == my_key:
+        pass
+    else:
+        send(payload, table_voisinage["suivant"]
+             [1], table_voisinage["suivant"][2])
+
+
 
 def traitementPayload(payload):
     global my_key, table_voisinage, is_first
@@ -157,6 +191,10 @@ def traitementPayload(payload):
         print(data)
         print("table de vosinage :")
         print(table_voisinage)
+        jsonFrame = { "type" : "new", "key": my_key, "ip" : my_ip, "port" : my_port}
+        send(jsonFrame, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
+    if command == 'new':
+        gestionNew(payload)
     if command == 'put':
         gestionPut(payload)
     if command == 'get':
@@ -224,6 +262,7 @@ def main():
         send(payload, sys.argv[2], int(sys.argv[3]))
     while(True):
         receive()
+        print(table_voisinage)
 
 
 if __name__ == '__main__':
