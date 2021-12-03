@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE PrototypingGui SYSTEM "rtdsPrototypingGui.dtd">
+
+<PrototypingGui>
+<Gui width="400" height="300" backgroundColor="#000000" backgroundImage="">
+<Widget id="4" name="BUTTON" type="BUTTON" x="150" y="80" width="40" height="20" text="Call John" textColor="#000000" color="#C4EFED">
+<OutputAction messageName="sCall" data="param1|=2"></OutputAction>
+</Widget>
+<Widget id="5" name="BUTTON" type="BUTTON" x="150" y="190" width="40" height="20" text="Hang up" textColor="#000000" color="#C4EFED">
+<OutputAction messageName="sHangUp" data=""></OutputAction>
+</Widget>
+<Widget id="6" name="LED" type="LED" x="290" y="140" width="20" height="20" text="N/A" textColor="#000000" color="#FF0000">
+</Widget>
+</Gui>
+<Trigger messageName="sCallConf">
+<Case caseName="New case">
+<GuiAction widgetId="6" actionType="CHANGE_COLOR" value="green"></GuiAction>
+</Case>
+</Trigger>
+<Trigger messageName="sHangUpConf">
+<Case caseName="New case">
+<GuiAction widgetId="6" actionType="CHANGE_COLOR" value="red"></GuiAction>
+</Case>
+</Trigger>
+</PrototypingGui>

@@ -1,0 +1,91 @@
+first name: 
+surname: 
+speciality: [V] SIAME [ ] CSA
+
+=== Section 2 ===
+Q3
+	loop bounds
+	crc.c:104: 42
+	crc.c:93: 256
+	crc.c:73: 8
+Q4
+	WCET: 152898 cycles
+Q6:
+	address of (A): BB 17
+	execution count of (A): 256
+	address of (B): 18 
+	execution count of (B): 255
+	why: il faut faire un dernier test sur le for pour voir qu'il faut sortir de la boucle
+Q7
+	why: les paramètres d'appel de la fonction sont différents ce qui va donner des CFG différents
+Q10
+	bound(s): 8 et 0
+Q11
+	WCET: 78804 cycles
+	explanation: avec oRange on peut obtenir des bounds plus précise, ce qui permet dans notre cas de changer la valeur de la bound ligne 73
+    lors du 2eme appel de la fonction car il voit que l'appel de la fonction n'est pas exécuté ce qui permet de réduire le WCET
+
+=== Section 3 ===
+Q3
+	loop bounds
+	bubble.c:12: 7/8
+	bubble.c:15: 7/8
+Q4
+	WCET: 3425/4352 cycles
+Q6
+	execution count: 64
+Q7
+	total execution count: 128
+Q8
+	observation: Il y a 2 fois plus d'execution dans la source que dans le CFG
+	explanation: il y a une grosse surestimation du fait que dans le fichier .ff nous n'avons pas préciser le nombre total d'execution ce qui ne lui permet pas 
+	de prendre en compte la boucle imbriqué
+Q10
+	WCET:1857 cycles
+
+=== Section 4 ===
+Q2
+	WCET: 156 cycles
+Q3:
+	loop bound: 8
+Q4:
+	WCET: 314 cycles
+Q5:
+	WCET: 1917 cycles
+Q6:
+	total execution time: 9598
+Q7:
+	16MHz: [X] yes [ ] no
+	smallest frequency: 9,598 MHz
+
+=== Section 5 ===
+Q1:
+	period: 10 ms
+Q2:
+	WCET doGyroChannel: 1828 cycles
+	WCET doAROMXChannel: 177 cycles
+	WCET doAROMYChannel: 163 cycles
+	WCET doAROMZChannel: 162 cycles
+	observation: doGyroChannel prend plus de cycle
+Q3:
+	approximated WCET: 7312 cycles
+Q4:
+	approximated total WCET: 9242 
+	difference: 356 cycles de différence
+Q5:
+	WCET: 4225 cycles
+Q6:
+	new smallest frequency:
+	4,225 MHz
+
+=== Section 6 ===
+
+Q3
+	BB address calling the function pointer: BB 6
+	SWI instruction address: BB 2 
+Q4:
+	called functions: one, zero
+	removed line: [ X] multicall [ ] noreturn
+Q6:
+	WCET: 48
+

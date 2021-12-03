@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Diagram SYSTEM "rtdsDiagram.dtd">
+
+<SdlFSMDiagram language="sdl" type="prcs" is_extract="FALSE" is_temporary="FALSE">
+<SdlFSMPartition name="" needs_cleanup="FALSE">
+<SdlFSMSymbol identifier="SYM1" type="sdlText" text="dcl
+  index Integer := 1,
+  pLocals pLocalArrayType;" outline_color="-" background_color="-" center_coordinates="335 98" dimensions="202 64" attached_symbol_id=""/>
+<NonStateTransition top_left_coordinates="286 214">
+<SdlFSMSymbol identifier="SYM2" type="sdlStart" outline_color="-" background_color="-" center_coordinates="394 229" dimensions="60 30" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM6" type="sdlCnctrIn" text="Lbl1" outline_color="-" background_color="-" center_coordinates="394 276" dimensions="110 40" attached_symbol_id=""/>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM3" type="sdlDecision" text="Index" outline_color="-" background_color="-" center_coordinates="394 328" dimensions="60 40" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM4" type="sdlAnswer" text="&lt;= NUM_PHONE" outline_color="-" background_color="-" center_coordinates="394 380" dimensions="104 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM9" type="sdlPrcsCreation" text="pLocal" outline_color="-" background_color="-" center_coordinates="394 432" dimensions="62 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM10" type="sdlTask" text="pLocals(index) := offspring,
+index := index + 1" outline_color="-" background_color="-" center_coordinates="394 489" dimensions="216 50" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM19" type="sdlCnctrOut" text="Lbl1" outline_color="-" background_color="-" center_coordinates="394 546" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM5" type="sdlAnswer" text="else" outline_color="-" background_color="-" center_coordinates="623 380" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM7" type="sdlSendSig" text="sReady" outline_color="-" background_color="-" center_coordinates="623 432" dimensions="62 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM8" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="623 484" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+</Transition>
+</NonStateTransition>
+<StateTransitionBlock top_left_coordinates="513 464">
+<SdlFSMSymbolReference identifier="SYM8"/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM11" type="sdlInputSig" text="sGetId(index)" outline_color="-" background_color="-" center_coordinates="623 536" dimensions="110 40" attached_symbol_id=""/>
+<Transition>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM12" type="sdlDecision" text="index &gt;= 1 and
+index &lt;= NUM_PHONE" outline_color="-" background_color="-" center_coordinates="623 593" dimensions="146 50" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM13" type="sdlAnswer" text="True" outline_color="-" background_color="-" center_coordinates="623 650" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM15" type="sdlSendSig" text="sId(pLocals(index)) to sender" outline_color="-" background_color="-" center_coordinates="623 702" dimensions="222 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM14" type="sdlAnswer" text="False" outline_color="-" background_color="-" center_coordinates="810 650" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM16" type="sdlSendSig" text="sError to sender" outline_color="-" background_color="-" center_coordinates="810 702" dimensions="132 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+<SdlFSMSymbol identifier="SYM17" type="sdlState" text="-" outline_color="-" background_color="-" center_coordinates="623 766" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<PageSpecification pageWidth="21.0" pageHeight="29.7" topMargin="1.0" bottomMargin="1.0" leftMargin="1.0" rightMargin="1.0" pageFooter="TRUE" scaleFactor="1.0"/>
+</SdlFSMPartition>
+</SdlFSMDiagram>

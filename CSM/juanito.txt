@@ -1,0 +1,49 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE work.bus_mux_pkg.ALL;
+
+ENTITY Module_Memoire IS
+	PORT
+	(adress : IN std_logic_vector(31 downto 0);
+     data_in : IN std_logic_vector(31 downto 0);
+     ReadMem_W : IN std_logic;
+     ReadMem_SH : IN std_logic;
+     ReadMem_UH : IN std_logic;
+     ReadMem_SB : IN std_logic;
+     ReadMem_UB : IN std_logic;
+     WriteMem_W : IN std_logic;
+	 WriteMem_H : IN std_logic;
+     WriteMem_B : IN std_logic;
+     WE : IN std_logic;
+     OE : IN std_logic;
+     clk : IN std_logic;
+     init : IN std_logic;
+     data_instr : IN std_logic;
+     data_out : OUT std_logic_vector(31 downto 0)
+	);
+END ENTITY Module_Memoire;
+
+architecture fdd_module_memoire of Module_Memoire is
+    signal banc_reg : bus_mux_array(2047 downto 0);
+    signal read_out : std_logic_vector(31 downto 0);
+    signal data_out_ecriture : std_logic_vector(31 downto 0);
+    signal read_in_mem : std_logic_vector(31 downto 0);
+begin
+    read_in_mem <= banc_reg(to_integer(unsigned(adress(31 downto 2))));
+    U1 : entity work.Port_Lecture port map(adress => adress, Read_in => read_in_mem,
+         ReadMem_W => ReadMem_W, ReadMem_SH => ReadMem_SH, ReadMem_UH => ReadMem_UH,
+         ReadMem_SB => ReadMem_SB, ReadMem_UB => ReadMem_UB, Read_out => read_out);
+    U2 : entity work.Port_Ecriture port map(adress => adress, data_in => data_in,
+         current_mem => read_in_mem, WriteMem_W => WriteMem_W, WriteMem_H => WriteMem_H,
+         WriteMem_B => WriteMem_B, data_out => data_out_ecriture);
+    data_out <= read_out when (WE = '1' and OE = '0') else
+                (others => 'Z');
+    process(clk)
+    begin
+        if (rising_edge(clk) and init = '0' and WE = '0') then 
+            banc_reg(to_integer(unsigned(adress(31 downto 2)))) <= data_out_ecriture;
+        end if;
+
+    end process;
+
+end fdd_module_memoire ; -- fdd_port_ecriture

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Diagram SYSTEM "rtdsDiagram.dtd">
+
+<SdlFSMDiagram language="sdl" type="prcs" is_extract="FALSE" is_temporary="FALSE">
+<SdlFSMPartition name="" needs_cleanup="FALSE">
+<SdlFSMSymbol identifier="SYM86" type="sdlText" text="imported M1Busy integer ;
+imported M2Busy integer ;
+imported M3Busy integer;
+dcl code_piece integer;
+dcl numero_machine integer;
+dcl M1BusyBis integer ;
+dcl M2BusyBis integer ;
+dcl M3BusyBis integer ;" outline_color="-" background_color="-" center_coordinates="598 133" dimensions="208 140" attached_symbol_id=""/>
+<NonStateTransition top_left_coordinates="253 159">
+<SdlFSMSymbol identifier="SYM1" type="sdlStart" outline_color="-" background_color="-" center_coordinates="283 174" dimensions="60 30" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM2" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="283 221" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NonStateTransition>
+<StateTransitionBlock top_left_coordinates="505 247">
+<SdlFSMSymbol identifier="SYM22" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="651 267" dimensions="60 40" attached_symbol_id=""/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM23" type="sdlInputSig" text="Creer_thread(code_piece,numero_machine)" outline_color="-" background_color="-" center_coordinates="651 319" dimensions="292 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM24" type="sdlSendSig" text="DeposerSurConv to Robot_alimentation" outline_color="-" background_color="-" center_coordinates="651 371" dimensions="272 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM34" type="sdlInitTimer" text="SET(now+20,T_RA)" outline_color="-" background_color="-" center_coordinates="651 423" dimensions="144 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM25" type="sdlState" text="AttenteFinDepotConv" outline_color="-" background_color="-" center_coordinates="651 475" dimensions="152 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="931 849">
+<SdlFSMSymbol identifier="SYM35" type="sdlState" text="AttenteFinDepotConv" outline_color="-" background_color="-" center_coordinates="1039 869" dimensions="152 40" attached_symbol_id=""/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM36" type="sdlInputSig" text="FinDepotConv" outline_color="-" background_color="-" center_coordinates="1039 921" dimensions="104 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM80" type="sdlResetTimer" text="RESET(T_RA)" outline_color="-" background_color="-" center_coordinates="1039 973" dimensions="108 40" attached_symbol_id=""/>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM53" type="sdlDecision" text="numero_machine = 1" outline_color="-" background_color="-" center_coordinates="1039 1025" dimensions="146 40" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM54" type="sdlAnswer" text="True" outline_color="-" background_color="-" center_coordinates="1039 1077" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM56" type="sdlSendSig" text="DeposerSurTable1 to Machine1" outline_color="-" background_color="-" center_coordinates="1039 1129" dimensions="216 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM55" type="sdlAnswer" text="False" outline_color="-" background_color="-" center_coordinates="1265 1077" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM58" type="sdlDecision" text="numero_machine = 2" outline_color="-" background_color="-" center_coordinates="1265 1129" dimensions="146 40" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM59" type="sdlAnswer" text="True" outline_color="-" background_color="-" center_coordinates="1265 1181" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM61" type="sdlSendSig" text="DeposerSurTable2 to Machine2" outline_color="-" background_color="-" center_coordinates="1265 1233" dimensions="216 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM60" type="sdlAnswer" text="False" outline_color="-" background_color="-" center_coordinates="1491 1181" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM62" type="sdlSendSig" text="DeposerSurTable3 to Machine3" outline_color="-" background_color="-" center_coordinates="1491 1233" dimensions="216 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+<SdlFSMSymbol identifier="SYM38" type="sdlState" text="AttenteFinUsinage" outline_color="-" background_color="-" center_coordinates="1039 1309" dimensions="138 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM44" type="sdlInputSig" text="T_RA" outline_color="-" background_color="-" center_coordinates="1639 921" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM70" type="sdlStop" outline_color="-" background_color="-" center_coordinates="1639 963" dimensions="20 20" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="2566 290">
+<SdlFSMSymbol identifier="SYM47" type="sdlState" text="AttenteFinDepotConvUsinee" outline_color="-" background_color="-" center_coordinates="2677 310" dimensions="194 40" attached_symbol_id=""/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM48" type="sdlInputSig" text="FinDepotConv" outline_color="-" background_color="-" center_coordinates="2677 362" dimensions="104 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM49" type="sdlSendSig" text="RetirerPiece to Robot_Retrait" outline_color="-" background_color="-" center_coordinates="2677 414" dimensions="222 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM125" type="sdlState" text="AttenteFinRetraitPiece" outline_color="-" background_color="-" center_coordinates="2677 466" dimensions="174 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="2051 989">
+<SdlFSMSymbol identifier="SYM64" type="sdlState" text="AttenteFinUsinage" outline_color="-" background_color="-" center_coordinates="2187 1009" dimensions="138 40" attached_symbol_id=""/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM65" type="sdlInputSig" text="FinUsinage1" outline_color="-" background_color="-" center_coordinates="2187 1061" dimensions="96 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM66" type="sdlSendSig" text="DeposerSurConv to Robot_alimentation" outline_color="-" background_color="-" center_coordinates="2187 1113" dimensions="272 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM67" type="sdlInitTimer" text="SET(now+30,T_RA)" outline_color="-" background_color="-" center_coordinates="2187 1165" dimensions="144 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM68" type="sdlState" text="AttenteFinDepotConvUsinee" outline_color="-" background_color="-" center_coordinates="2187 1217" dimensions="194 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM95" type="sdlInputSig" text="FinUsinage2" outline_color="-" background_color="-" center_coordinates="2469 1061" dimensions="96 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM97" type="sdlSendSig" text="DeposerSurConv to Robot_alimentation" outline_color="-" background_color="-" center_coordinates="2469 1113" dimensions="272 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM98" type="sdlInitTimer" text="SET(now+30,T_RA)" outline_color="-" background_color="-" center_coordinates="2469 1165" dimensions="144 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM99" type="sdlState" text="AttenteFinDepotConvUsinee" outline_color="-" background_color="-" center_coordinates="2469 1217" dimensions="194 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM96" type="sdlInputSig" text="FinUsinage3" outline_color="-" background_color="-" center_coordinates="2751 1061" dimensions="96 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM100" type="sdlSendSig" text="DeposerSurConv to Robot_alimentation" outline_color="-" background_color="-" center_coordinates="2751 1113" dimensions="272 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM101" type="sdlInitTimer" text="SET(now+30,T_RA)" outline_color="-" background_color="-" center_coordinates="2751 1165" dimensions="144 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM102" type="sdlState" text="AttenteFinDepotConvUsinee" outline_color="-" background_color="-" center_coordinates="2751 1217" dimensions="194 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="3238 986">
+<SdlFSMSymbol identifier="SYM107" type="sdlState" text="AttenteFinRetraitPiece" outline_color="-" background_color="-" center_coordinates="3342 1006" dimensions="174 40" attached_symbol_id=""/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM108" type="sdlInputSig" text="FinRetraitPiece" outline_color="-" background_color="-" center_coordinates="3342 1058" dimensions="124 40" attached_symbol_id=""/>
+<Transition>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM109" type="sdlDecision" text="numero_machine = 1" outline_color="-" background_color="-" center_coordinates="3342 1110" dimensions="146 40" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM110" type="sdlAnswer" text="True" outline_color="-" background_color="-" center_coordinates="3342 1162" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM112" type="sdlTask" text="M1BusyBis := import(M1Busy)" outline_color="-" background_color="-" center_coordinates="3342 1214" dimensions="208 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM113" type="sdlTask" text="M1BusyBis:= 0" outline_color="-" background_color="-" center_coordinates="3342 1266" dimensions="110 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM114" type="sdlSendSig" text="Fin_Busy(1)" outline_color="-" background_color="-" center_coordinates="3342 1318" dimensions="96 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM111" type="sdlAnswer" text="False" outline_color="-" background_color="-" center_coordinates="3560 1162" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM115" type="sdlDecision" text="numero_machine = 2" outline_color="-" background_color="-" center_coordinates="3560 1214" dimensions="146 40" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM116" type="sdlAnswer" text="True" outline_color="-" background_color="-" center_coordinates="3560 1266" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM118" type="sdlTask" text="M2BusyBis := import(M2Busy)" outline_color="-" background_color="-" center_coordinates="3560 1318" dimensions="208 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM119" type="sdlTask" text="M2BusyBis := 0" outline_color="-" background_color="-" center_coordinates="3560 1370" dimensions="118 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM120" type="sdlSendSig" text="Fin_Busy(2)" outline_color="-" background_color="-" center_coordinates="3560 1422" dimensions="96 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM117" type="sdlAnswer" text="False" outline_color="-" background_color="-" center_coordinates="3778 1266" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM121" type="sdlTask" text="M3BusyBis := import(M3Busy)" outline_color="-" background_color="-" center_coordinates="3778 1318" dimensions="208 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM122" type="sdlTask" text="M3BusyBis := 0" outline_color="-" background_color="-" center_coordinates="3778 1370" dimensions="118 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM123" type="sdlSendSig" text="Fin_Busy(3)" outline_color="-" background_color="-" center_coordinates="3778 1422" dimensions="96 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+<SdlFSMSymbol identifier="SYM145" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="3342 1498" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<PageSpecification pageWidth="21.0" pageHeight="29.7" topMargin="1.0" bottomMargin="1.0" leftMargin="1.0" rightMargin="1.0" pageFooter="TRUE" scaleFactor="1.0"/>
+</SdlFSMPartition>
+</SdlFSMDiagram>

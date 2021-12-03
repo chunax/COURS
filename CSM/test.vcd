@@ -1,0 +1,111 @@
+$date
+  Thu Oct 28 15:09:47 2021
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module numeric_std $end
+$upscope $end
+$scope module bus_mux_pkg $end
+$upscope $end
+$scope module test_barrel_shifter $end
+$var reg 32 ! s_a[31:0] $end
+$var reg 32 " s_sr[31:0] $end
+$var reg 32 # s_sl[31:0] $end
+$var reg 5 $ s_valdec[4:0] $end
+$scope module pgen5 $end
+$var reg 32 % a[31:0] $end
+$var reg 5 & valdec[4:0] $end
+$var reg 32 ' sr[31:0] $end
+$var reg 32 ( sl[31:0] $end
+$comment tab_droite is not handled $end
+$comment tab_gauche is not handled $end
+$scope module loop_droite(1) $end
+$upscope $end
+$scope module loop_droite(2) $end
+$upscope $end
+$scope module loop_droite(3) $end
+$upscope $end
+$scope module loop_droite(4) $end
+$upscope $end
+$scope module loop_droite(5) $end
+$upscope $end
+$scope module loop_droite(6) $end
+$upscope $end
+$scope module loop_droite(7) $end
+$upscope $end
+$scope module loop_droite(8) $end
+$upscope $end
+$scope module loop_droite(9) $end
+$upscope $end
+$scope module loop_droite(10) $end
+$upscope $end
+$scope module loop_droite(11) $end
+$upscope $end
+$scope module loop_droite(12) $end
+$upscope $end
+$scope module loop_droite(13) $end
+$upscope $end
+$scope module loop_droite(14) $end
+$upscope $end
+$scope module loop_droite(15) $end
+$upscope $end
+$scope module loop_droite(16) $end
+$upscope $end
+$scope module loop_droite(17) $end
+$upscope $end
+$scope module loop_droite(18) $end
+$upscope $end
+$scope module loop_droite(19) $end
+$upscope $end
+$scope module loop_droite(20) $end
+$upscope $end
+$scope module loop_droite(21) $end
+$upscope $end
+$scope module loop_droite(22) $end
+$upscope $end
+$scope module loop_droite(23) $end
+$upscope $end
+$scope module loop_droite(24) $end
+$upscope $end
+$scope module loop_droite(25) $end
+$upscope $end
+$scope module loop_droite(26) $end
+$upscope $end
+$scope module loop_droite(27) $end
+$upscope $end
+$scope module loop_droite(28) $end
+$upscope $end
+$scope module loop_droite(29) $end
+$upscope $end
+$scope module loop_droite(30) $end
+$upscope $end
+$scope module loop_droite(31) $end
+$upscope $end
+$scope module loop_droite(32) $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b00000000000000000000000000000001 !
+b00000000000000000000000000000000 "
+b00000000000000000000000000000100 #
+b00010 $
+b00000000000000000000000000000001 %
+b00010 &
+b00000000000000000000000000000000 '
+b00000000000000000000000000000100 (
+#5000000
+b00000000000000000000000000000010 #
+b00001 $
+b00001 &
+b00000000000000000000000000000010 (
+#10000000

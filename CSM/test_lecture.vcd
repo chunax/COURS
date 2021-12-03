@@ -1,0 +1,90 @@
+$date
+  Thu Nov 25 14:55:19 2021
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module test_lecture $end
+$var reg 32 ! s_adress[31:0] $end
+$var reg 32 " s_read_in[31:0] $end
+$var reg 32 # s_read_out[31:0] $end
+$var reg 1 $ s_readmem_w $end
+$var reg 1 % s_readmem_sh $end
+$var reg 1 & s_readmem_uh $end
+$var reg 1 ' s_readmem_sb $end
+$var reg 1 ( s_readmem_ub $end
+$scope module pgen0 $end
+$var reg 32 ) adress[31:0] $end
+$var reg 32 * read_in[31:0] $end
+$var reg 1 + readmem_w $end
+$var reg 1 , readmem_sh $end
+$var reg 1 - readmem_uh $end
+$var reg 1 . readmem_sb $end
+$var reg 1 / readmem_ub $end
+$var reg 32 0 read_out[31:0] $end
+$var reg 16 1 zero_15[15:0] $end
+$var reg 24 2 zero_23[23:0] $end
+$var reg 16 3 ext_sh_31[15:0] $end
+$var reg 16 4 ext_sh_15[15:0] $end
+$var reg 24 5 ext_sb_31[23:0] $end
+$var reg 24 6 ext_sb_23[23:0] $end
+$var reg 24 7 ext_sb_15[23:0] $end
+$var reg 24 8 ext_sb_7[23:0] $end
+$var reg 32 9 tmp_w[31:0] $end
+$var reg 32 : tmp_sh[31:0] $end
+$var reg 32 ; tmp_uh[31:0] $end
+$var reg 32 < tmp_sb[31:0] $end
+$var reg 32 = tmp_ub[31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b11111111111111111111111111111110 !
+b11111111111111110000000000000000 "
+b11111111111111110000000000000000 #
+1$
+0%
+0&
+0'
+0(
+b11111111111111111111111111111110 )
+b11111111111111110000000000000000 *
+1+
+0,
+0-
+0.
+0/
+b11111111111111110000000000000000 0
+b0000000000000000 1
+b000000000000000000000000 2
+b1111111111111111 3
+b0000000000000000 4
+b111111111111111111111111 5
+b111111111111111111111111 6
+b000000000000000000000000 7
+b000000000000000000000000 8
+b11111111111111110000000000000000 9
+b11111111111111111111111111111111 :
+b00000000000000001111111111111111 ;
+b11111111111111111111111111111111 <
+b00000000000000000000000011111111 =
+#5000000
+b11111111111111111111111111111111 #
+0$
+1%
+0+
+1,
+b11111111111111111111111111111111 0
+#10000000
+0%
+1'
+0,
+1.
+#15000000

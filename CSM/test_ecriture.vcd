@@ -1,0 +1,88 @@
+$date
+  Thu Dec  2 15:19:58 2021
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module test_ecriture $end
+$var reg 32 ! s_adress[31:0] $end
+$var reg 32 " s_data_in[31:0] $end
+$var reg 32 # s_current_mem[31:0] $end
+$var reg 32 $ s_data_out[31:0] $end
+$var reg 1 % s_writemem_w $end
+$var reg 1 & s_writemem_h $end
+$var reg 1 ' s_writemem_b $end
+$scope module pgen1 $end
+$var reg 32 ( adress[31:0] $end
+$var reg 32 ) data_in[31:0] $end
+$var reg 32 * current_mem[31:0] $end
+$var reg 1 + writemem_w $end
+$var reg 1 , writemem_h $end
+$var reg 1 - writemem_b $end
+$var reg 32 . data_out[31:0] $end
+$var reg 32 / tmp_w[31:0] $end
+$var reg 32 0 tmp_h[31:0] $end
+$var reg 32 1 tmp_b[31:0] $end
+$var reg 16 2 tmp_currmem_31[15:0] $end
+$var reg 16 3 tmp_currmem_15[15:0] $end
+$var reg 24 4 tmp_sb_31[23:0] $end
+$var reg 8 5 tmp_sb_23_1[7:0] $end
+$var reg 16 6 tmp_sb_23_2[15:0] $end
+$var reg 16 7 tmp_sb_15_1[15:0] $end
+$var reg 8 8 tmp_sb_15_2[7:0] $end
+$var reg 24 9 tmp_sb_7[23:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b11111111111111111111111111111100 !
+b11111111111111111111111111111111 "
+b00000000000000000000000000000000 #
+b11111111111111111111111111111111 $
+1%
+0&
+0'
+b11111111111111111111111111111100 (
+b11111111111111111111111111111111 )
+b00000000000000000000000000000000 *
+1+
+0,
+0-
+b11111111111111111111111111111111 .
+b11111111111111111111111111111111 /
+b00000000000000001111111111111111 0
+b00000000000000000000000011111111 1
+b0000000000000000 2
+b0000000000000000 3
+b000000000000000000000000 4
+b00000000 5
+b0000000000000000 6
+b0000000000000000 7
+b00000000 8
+b000000000000000000000000 9
+#5000000
+b00000000000000001111111111111111 $
+0%
+1&
+0+
+1,
+b00000000000000001111111111111111 .
+#10000000
+b00000000000000000000000011111111 $
+0&
+1'
+0,
+1-
+b00000000000000000000000011111111 .
+#15000000
+bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX $
+0'
+0-
+bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX .

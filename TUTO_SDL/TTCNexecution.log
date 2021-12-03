@@ -1,0 +1,9 @@
+
+
+==============================
+project /nfs/home/camsi6/Documents/phone.rdp
+08/10/21 at 09:42 : Simulation started
+08/10/21 at 09:44 : control part started
+08/10/21 at 09:44 : module 'TestPhone' testcase 'tc_callJohn' verdict 'pass'
+08/10/21 at 09:44 : module 'TestPhone' control part verdict 'pass'
+08/10/21 at 09:45 : simulation ended

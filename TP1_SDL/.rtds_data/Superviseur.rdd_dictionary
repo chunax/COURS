@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE DictionaryObjects SYSTEM "rtdsDictionaryObjects.dtd">
+
+<DictionaryObjects version="9620" language="none" diagramType="blk">
+<Signal id="SIG1" name="Piece">
+</Signal>
+<Signal id="SIG2" name="Creer_thread">
+</Signal>
+<Item id="ITEM1" type="block" name="Superviseur" scope="current" formalParameterOrder="-" isFormalParam="FALSE" isSyntype="FALSE">
+<UsingSymbols>
+<SymbolReference symbolId="SYMB1"/>
+</UsingSymbols>
+<SignalWindow id="SIGWDW14" insideDiagram="TRUE">
+<ConnectorReference linkId="LINK22" isFrom="TRUE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW12" insideDiagram="TRUE">
+<ConnectorReference linkId="LINK21" isFrom="TRUE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW13" insideDiagram="TRUE">
+<ConnectorReference linkId="LINK23" isFrom="TRUE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW10" insideDiagram="TRUE">
+<ConnectorReference linkId="LINK19" isFrom="TRUE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW11" insideDiagram="TRUE">
+<ConnectorReference linkId="LINK20" isFrom="TRUE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW9" insideDiagram="TRUE">
+<ConnectorReference linkId="LINK18" isFrom="TRUE"/>
+<SentSignals>
+<SignalReference id="SIG1"/>
+</SentSignals>
+</SignalWindow>
+<Channel name="cEnvDialogue" fromSignalWindow="SIGWDW9" toSignalWindow="SIGWDW1"/>
+<Channel name="cInterne" fromSignalWindow="SIGWDW2" toSignalWindow="SIGWDW8"/>
+<Channel name="(new channel)" fromSignalWindow="SIGWDW10" toSignalWindow="SIGWDW3"/>
+<Channel name="(new channel)" fromSignalWindow="SIGWDW11" toSignalWindow="SIGWDW4"/>
+<Channel name="(new channel)" fromSignalWindow="SIGWDW12" toSignalWindow="SIGWDW5"/>
+<Channel name="(new channel)" fromSignalWindow="SIGWDW13" toSignalWindow="SIGWDW6"/>
+<Channel name="(new channel)" fromSignalWindow="SIGWDW14" toSignalWindow="SIGWDW7"/>
+</Item>
+<Item id="ITEM2" type="process" name="Th_Dialogue" parentId="ITEM1" scope="none" minInstances="1" formalParameterOrder="-" isFormalParam="FALSE" isSyntype="FALSE">
+<DefiningSymbols>
+<SymbolReference symbolId="SYMB2"/>
+</DefiningSymbols>
+<UsingSymbols>
+<SymbolReference symbolId="SYMB2"/>
+</UsingSymbols>
+<SignalWindow id="SIGWDW1" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK18" isFrom="FALSE"/>
+<ReceivedSignals>
+<SignalReference id="SIG1"/>
+</ReceivedSignals>
+</SignalWindow>
+<SignalWindow id="SIGWDW2" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK17" isFrom="TRUE"/>
+<SentSignals>
+<SignalReference id="SIG2"/>
+</SentSignals>
+</SignalWindow>
+</Item>
+<Item id="ITEM3" type="process" name="Th_Piece" parentId="ITEM1" scope="none" minInstances="1" formalParameterOrder="-" isFormalParam="FALSE" isSyntype="FALSE">
+<DefiningSymbols>
+<SymbolReference symbolId="SYMB3"/>
+</DefiningSymbols>
+<UsingSymbols>
+<SymbolReference symbolId="SYMB3"/>
+</UsingSymbols>
+<SignalWindow id="SIGWDW4" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK20" isFrom="FALSE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW5" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK21" isFrom="FALSE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW6" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK23" isFrom="FALSE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW7" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK22" isFrom="FALSE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW3" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK19" isFrom="FALSE"/>
+</SignalWindow>
+<SignalWindow id="SIGWDW8" insideDiagram="FALSE">
+<ConnectorReference linkId="LINK17" isFrom="FALSE"/>
+<ReceivedSignals>
+<SignalReference id="SIG2"/>
+</ReceivedSignals>
+</SignalWindow>
+</Item>
+</DictionaryObjects>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Diagram SYSTEM "rtdsDiagram.dtd">
+
+<Diagram language="sdl" type="sys" defaultColorsNeedFixing="FALSE" name="TP1_sys" showMsgData="full" linksCrossingAllowed="FALSE" cellWidthMm="4">
+
+<DiagramPartition name="Part. 0" nbPagesH="2" nbPagesV="1">
+<PageSpecification pageWidth="21.0" pageHeight="29.7" topMargin="0.0" bottomMargin="0.0" leftMargin="0.0" rightMargin="0.0" pageFooter="FALSE" scaleFactor="1.0"/>
+
+<Symbol symbolId="SYMB1" type="sdlSysDgmFrm" xCenter="595" yCenter="420" fixedDimensions="TRUE" width="1146" height="775" color="-" fillColor="-">
+<Description></Description>
+<Text></Text>
+
+<Symbol symbolId="SYMB15" type="sdlPrcs" xCenter="209" yCenter="319" fixedDimensions="FALSE" width="110" height="44" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Th_Dialogue</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB16" type="sdlPrcs" xCenter="605" yCenter="330" fixedDimensions="TRUE" width="374" height="154" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Th_Pieces(0,NUM_MACHINE)</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB23" type="sdlText" xCenter="231" yCenter="143" fixedDimensions="TRUE" width="506" height="176" color="#000000" fillColor="#FFFFFF">
+<Description></Description>
+<Text>/* synonym NUM_MACHINE Integer = 3 ; */
+
+SIGNAL Piece(integer);
+SIGNAL Creer_thread(integer,integer);
+SIGNAL RetirerPiece,FinRetraitPiece ;
+SIGNAL DeposerSurConv,FinDepotConv ;
+SIGNAL DeposerSurConv1,DeposerSurTable1,FinDepotTable1,FinDepotConv1;
+SIGNAL DeposerSurConv2,DeposerSurTable2,FinDepotTable2,FinDepotConv2;
+SIGNAL DeposerSurConv3,DeposerSurTable3,FinDepotTable3,FinDepotConv3;
+SIGNAL FinUsinage1,FinUsinage2,FinUsinage3 ;</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB3" type="sdlPrcs" xCenter="1045" yCenter="33" fixedDimensions="FALSE" width="154" height="44" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Robot_alimentation</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB4" type="sdlPrcs" xCenter="264" yCenter="660" fixedDimensions="FALSE" width="88" height="44" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Machine1</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB5" type="sdlPrcs" xCenter="649" yCenter="660" fixedDimensions="FALSE" width="88" height="44" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Machine2</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB6" type="sdlPrcs" xCenter="1067" yCenter="671" fixedDimensions="FALSE" width="88" height="44" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Machine3</Text>
+</Symbol>
+
+<Symbol symbolId="SYMB7" type="sdlPrcs" xCenter="561" yCenter="33" fixedDimensions="FALSE" width="132" height="44" color="#000000" fillColor="#C4EFED">
+<Description></Description>
+<Text>Robot_Retrait</Text>
+</Symbol>
+</Symbol>
+
+<Link linkId="LINK111" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvSuperviseur</Text>
+<Connector attachedSymbolId="SYMB15" type="chnl" isOutside="TRUE" side="y" position="0.0" endType="midarrow">
+<Text id="1">[Piece]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB1" type="chnl" isOutside="FALSE" side="w" position="-0.175483870968" endType="midarrow">
+<Text id="1">[]</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="h" length="-209"/>
+
+</Link>
+
+<Link linkId="LINK133" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvInterne</Text>
+<Connector attachedSymbolId="SYMB15" type="chnl" isOutside="TRUE" side="y" position="0.0" endType="midarrow">
+<Text id="1">[]</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB16" type="chnl" isOutside="TRUE" side="y" position="-0.142857142857" endType="midarrow">
+<Text id="1">[Creer_thread]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="h" length="396"/>
+
+</Link>
+
+<Link linkId="LINK132" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvAlim</Text>
+<Connector attachedSymbolId="SYMB16" type="chnl" isOutside="TRUE" side="y" position="0.0" endType="midarrow">
+<Text id="1">[FinDepotConv]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB3" type="chnl" isOutside="TRUE" side="x" position="0.0" endType="midarrow">
+<Text id="1">[DeposerSurConv]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="h" length="440"/>
+<LinkSegment orientation="v" length="-297"/>
+
+</Link>
+
+<Link linkId="LINK135" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvMachine1</Text>
+<Connector attachedSymbolId="SYMB16" type="chnl" isOutside="TRUE" side="x" position="-0.941176470588" endType="midarrow">
+<Text id="1">[FinDepotTable1,FinDepotConv1,FinUsinage1]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB4" type="chnl" isOutside="TRUE" side="x" position="0.0" endType="midarrow">
+<Text id="1">[DeposerSurTable1,DeposerSurConv1]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="v" length="165"/>
+<LinkSegment orientation="h" length="-165"/>
+<LinkSegment orientation="v" length="165"/>
+
+</Link>
+
+<Link linkId="LINK137" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvMachine2</Text>
+<Connector attachedSymbolId="SYMB16" type="chnl" isOutside="TRUE" side="x" position="0.705882352941" endType="midarrow">
+<Text id="1">[FinDepotTable2,FinDepotConv2,FinUsinage2]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB5" type="chnl" isOutside="TRUE" side="y" position="0.0" endType="midarrow">
+<Text id="1">[DeposerSurConv2,DeposerSurTable2]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="v" length="330"/>
+<LinkSegment orientation="h" length="-88"/>
+
+</Link>
+
+<Link linkId="LINK134" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvMachine3</Text>
+<Connector attachedSymbolId="SYMB16" type="chnl" isOutside="TRUE" side="y" position="1.0" endType="midarrow">
+<Text id="1">[FinDepotConv3,FinDepotTable3,FinUsinage3]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB6" type="chnl" isOutside="TRUE" side="x" position="0.0" endType="midarrow">
+<Text id="1">[DeposerSurConv3,DeposerSurTable3]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="h" length="462"/>
+<LinkSegment orientation="v" length="264"/>
+
+</Link>
+
+<Link linkId="LINK136" type="chnl" textSegmentNum="0" color="#000000" reverseRead="FALSE" oriented="TRUE">
+<Text>cEnvRetrait</Text>
+<Connector attachedSymbolId="SYMB16" type="chnl" isOutside="TRUE" side="x" position="0.0" endType="midarrow">
+<Text id="1">[FinRetraitPiece]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<Connector attachedSymbolId="SYMB7" type="chnl" isOutside="TRUE" side="x" position="0.0" endType="midarrow">
+<Text id="1">[RetirerPiece]
+</Text>
+<Text id="2"></Text>
+</Connector>
+<LinkSegment orientation="v" length="-154"/>
+<LinkSegment orientation="h" length="-44"/>
+<LinkSegment orientation="v" length="-143"/>
+
+</Link>
+</DiagramPartition>
+
+</Diagram>

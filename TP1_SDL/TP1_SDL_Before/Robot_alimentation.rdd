@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Diagram SYSTEM "rtdsDiagram.dtd">
+
+<SdlFSMDiagram language="sdl" type="prcs" is_extract="FALSE" is_temporary="FALSE">
+<SdlFSMPartition name="" needs_cleanup="FALSE">
+<SdlFSMSymbol identifier="SYM24" type="sdlText" text="dcl X Integer;" outline_color="-" background_color="-" center_coordinates="745 205" dimensions="118 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM25" type="sdlText" text="/*deposer_piece_brute()*/" outline_color="-" background_color="-" center_coordinates="792 318" dimensions="194 40" attached_symbol_id=""/>
+<NonStateTransition top_left_coordinates="691 0">
+<SdlFSMSymbol identifier="SYM1" type="sdlStart" outline_color="-" background_color="-" center_coordinates="721 15" dimensions="60 30" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM5" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="721 62" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NonStateTransition>
+<StateTransitionBlock top_left_coordinates="984 146">
+<SdlFSMSymbol identifier="SYM16" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="1099 166" dimensions="60 40" attached_symbol_id=""/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM17" type="sdlInputSig" text="DeposerSurConv" outline_color="-" background_color="-" center_coordinates="1099 218" dimensions="118 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM20" type="sdlTask" text="X := ANY(random_default_piece)" outline_color="-" background_color="-" center_coordinates="1099 270" dimensions="230 40" attached_symbol_id=""/>
+<DecisionBlock>
+<SdlFSMSymbol identifier="SYM26" type="sdlDecision" text="X &gt;= 5" outline_color="-" background_color="-" center_coordinates="1099 322" dimensions="62 40" attached_symbol_id=""/>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM27" type="sdlAnswer" text="True" outline_color="-" background_color="-" center_coordinates="1099 374" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+</Transition>
+</DecisionBranch>
+<DecisionBranch>
+<SdlFSMSymbol identifier="SYM28" type="sdlAnswer" text="False" outline_color="-" background_color="-" center_coordinates="1169 374" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM29" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="1169 426" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</DecisionBranch>
+</DecisionBlock>
+<SdlFSMSymbol identifier="SYM22" type="sdlSendSig" text="FinDepotConv to sender" outline_color="-" background_color="-" center_coordinates="1099 490" dimensions="174 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM23" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="1099 542" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<PageSpecification pageWidth="21.0" pageHeight="29.7" topMargin="1.0" bottomMargin="1.0" leftMargin="1.0" rightMargin="1.0" pageFooter="TRUE" scaleFactor="1.0"/>
+</SdlFSMPartition>
+</SdlFSMDiagram>

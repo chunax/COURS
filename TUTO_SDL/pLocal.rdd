@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Diagram SYSTEM "rtdsDiagram.dtd">
+
+<SdlFSMDiagram language="sdl" type="prcs" is_extract="FALSE" is_temporary="FALSE">
+<SdlFSMPartition name="" needs_cleanup="FALSE">
+<SdlFSMSymbol identifier="SYM36" type="sdlText" text="dcl
+  remotePID PID := NULL,
+  calledNumber Integer;" outline_color="-" background_color="-" center_coordinates="204 57" dimensions="188 64" attached_symbol_id=""/>
+<NonStateTransition top_left_coordinates="78 116">
+<SdlFSMSymbol identifier="SYM1" type="sdlStart" outline_color="-" background_color="-" center_coordinates="158 131" dimensions="60 30" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM4" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="158 178" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NonStateTransition>
+<StateTransitionBlock top_left_coordinates="421 762">
+<SdlFSMSymbolReference identifier="SYM32"/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM33" type="sdlInputSig" text="sDisConf" outline_color="-" background_color="-" center_coordinates="466 854" dimensions="76 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM34" type="sdlSendSig" text="sHangUpConf" outline_color="-" background_color="-" center_coordinates="466 906" dimensions="96 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM35" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="466 958" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="117 606">
+<SdlFSMSymbolReference identifier="SYM20"/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM24" type="sdlInputSig" text="sCnxReq" outline_color="-" background_color="-" center_coordinates="158 698" dimensions="68 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM25" type="sdlSendSig" text="sBusy to sender" outline_color="-" background_color="-" center_coordinates="158 750" dimensions="124 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM26" type="sdlState" text="*" outline_color="-" background_color="-" center_coordinates="158 802" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM27" type="sdlInputSig" text="sDisReq" outline_color="-" background_color="-" center_coordinates="303 698" dimensions="68 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM28" type="sdlSendSig" text="sDisConf to sender" outline_color="-" background_color="-" center_coordinates="303 750" dimensions="146 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM29" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="303 802" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM30" type="sdlInputSig" text="sHangUp" outline_color="-" background_color="-" center_coordinates="466 698" dimensions="68 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM31" type="sdlSendSig" text="sDisReq to remotePID" outline_color="-" background_color="-" center_coordinates="466 750" dimensions="160 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM32" type="sdlState" text="Disconnecting" outline_color="-" background_color="-" center_coordinates="466 802" dimensions="110 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="232 447">
+<SdlFSMSymbolReference identifier="SYM14"/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM18" type="sdlInputSig" text="sCnxConf" outline_color="-" background_color="-" center_coordinates="158 542" dimensions="76 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM19" type="sdlSendSig" text="sCallConf" outline_color="-" background_color="-" center_coordinates="158 594" dimensions="82 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM20" type="sdlState" text="Connected" outline_color="-" background_color="-" center_coordinates="158 646" dimensions="82 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM21" type="sdlInputSig" text="sBusy" outline_color="-" background_color="-" center_coordinates="632 542" dimensions="60 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM22" type="sdlSendSig" text="sBusy via cEnvLocal" outline_color="-" background_color="-" center_coordinates="632 594" dimensions="152 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM23" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="632 646" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="346 290">
+<SdlFSMSymbolReference identifier="SYM7"/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM12" type="sdlInputSig" text="sId(remotePID)" outline_color="-" background_color="-" center_coordinates="158 386" dimensions="118 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM13" type="sdlSendSig" text="sCnxReq to remotePID" outline_color="-" background_color="-" center_coordinates="158 438" dimensions="160 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM14" type="sdlState" text="Connecting" outline_color="-" background_color="-" center_coordinates="158 490" dimensions="90 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM15" type="sdlInputSig" text="sError" outline_color="-" background_color="-" center_coordinates="794 386" dimensions="62 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM16" type="sdlSendSig" text="sBusy via cEnvLocal" outline_color="-" background_color="-" center_coordinates="794 438" dimensions="152 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM17" type="sdlState" text="Idle" outline_color="-" background_color="-" center_coordinates="794 490" dimensions="60 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<StateTransitionBlock top_left_coordinates="307 134">
+<SdlFSMSymbolReference identifier="SYM4"/>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM5" type="sdlInputSig" text="sCall(calledNumber)" outline_color="-" background_color="-" center_coordinates="158 230" dimensions="152 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM6" type="sdlSendSig" text="sGetId(calledNumber)" outline_color="-" background_color="-" center_coordinates="158 282" dimensions="160 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM7" type="sdlState" text="GettingId" outline_color="-" background_color="-" center_coordinates="158 334" dimensions="82 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+<NormalStateTransition>
+<SdlFSMSymbol identifier="SYM8" type="sdlInputSig" text="sCnxReq" outline_color="-" background_color="-" center_coordinates="963 230" dimensions="68 40" attached_symbol_id=""/>
+<Transition>
+<SdlFSMSymbol identifier="SYM9" type="sdlTask" text="remotePID := sender" outline_color="-" background_color="-" center_coordinates="963 282" dimensions="152 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM10" type="sdlSendSig" text="sCnxConf to remotePID" outline_color="-" background_color="-" center_coordinates="963 334" dimensions="166 40" attached_symbol_id=""/>
+<SdlFSMSymbol identifier="SYM11" type="sdlState" text="Connected" outline_color="-" background_color="-" center_coordinates="963 386" dimensions="82 40" attached_symbol_id=""/>
+</Transition>
+</NormalStateTransition>
+</StateTransitionBlock>
+<PageSpecification pageWidth="21.0" pageHeight="29.7" topMargin="1.0" bottomMargin="1.0" leftMargin="1.0" rightMargin="1.0" pageFooter="TRUE" scaleFactor="1.0"/>
+</SdlFSMPartition>
+</SdlFSMDiagram>
