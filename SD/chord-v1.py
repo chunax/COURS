@@ -151,21 +151,19 @@ def gestionGet(payload):
     
 def gestionNew(payload):
     if is_between_suivant(payload["key"]):
-        tmp_suivant = table_voisinage["suivant"]
         table_voisinage["suivant"][0] = payload["key"]
         table_voisinage["suivant"][1] = payload["ip"]
         table_voisinage["suivant"][2] = payload["port"]
-        send(payload, tmp_suivant[1], tmp_suivant[2])
+        send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
     elif is_between(payload["key"]):
         table_voisinage["precedent"][0] = payload["key"]
         table_voisinage["precedent"][1] = payload["ip"]
         table_voisinage["precedent"][2] = payload["port"]
-        send(payload, table_voisinage["suivant"][1], table_voisinage["suivant"][2])
+        send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
     elif payload["key"] == my_key:
         pass
     else:
-        send(payload, table_voisinage["suivant"]
-             [1], table_voisinage["suivant"][2])
+        send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
 
 
 
@@ -179,9 +177,6 @@ def traitementPayload(payload):
         test_key = random.randint(0,65535)
         payload = {"type" : "join", "key" : test_key, "ip" : my_ip, "port" : my_port }
         send(payload, sys.argv[2], int(sys.argv[3]))
-    # if command == 'accept':
-    #     print("accept reçu")
-    #     my_key = payload["key"]
     if command == 'init':
         print("init reçu")
         my_key = payload["key"]
