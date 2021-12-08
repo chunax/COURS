@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/nfs/home/camsi6/Documents/COURS/STRE_OTAWA/labwork2/labwork.cpp
+otawa/otawa.h
+-
+otawa/ipet.h
+-
+

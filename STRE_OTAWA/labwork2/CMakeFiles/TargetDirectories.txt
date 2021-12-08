@@ -1,0 +1,4 @@
+/nfs/home/camsi6/Documents/COURS/STRE_OTAWA/labwork2/CMakeFiles/edit_cache.dir
+/nfs/home/camsi6/Documents/COURS/STRE_OTAWA/labwork2/CMakeFiles/labwork.dir
+/nfs/home/camsi6/Documents/COURS/STRE_OTAWA/labwork2/CMakeFiles/rebuild_cache.dir
+/nfs/home/camsi6/Documents/COURS/STRE_OTAWA/labwork2/CMakeFiles/dist.dir
