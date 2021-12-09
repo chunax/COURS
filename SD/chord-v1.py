@@ -63,6 +63,7 @@ def is_between(key):
             return True
         else:
             return False
+
 def is_between_suivant(key):
     if table_voisinage["suivant"][0] < my_key:
         if key < table_voisinage["suivant"][0] or key > my_key:
@@ -149,7 +150,7 @@ def gestionGet(payload):
             if cle == payload["key"]:
                 val = valeur
                 break
-        jsonFrame = {"type" : "answer", "key" : my_key, "val" : val}
+        jsonFrame = {"type" : "answer", "key" : payload["key"], "val" : val}
         send(jsonFrame, payload["ip"], payload["port"])
     
     else:

@@ -40,11 +40,15 @@ def receive():
         return
     print("payload reçu : ")
     print(rec)
-    if rec["type"] == "ack":
-        return True
+    msg = json.loads(rec)
+    if msg["type"] == "ack":
+        print("put reussi")
     else:
-        return False
-
+        print("put fail")
+    if msg["type"] == "answer":
+        print("get reussi")
+    else:
+        print("get fail")
 def main():
     if sys.argv[2] == 'put':
         command = sys.argv[2]
