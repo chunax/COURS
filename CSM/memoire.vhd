@@ -155,7 +155,7 @@ architecture fdd_module_memoire of Module_Memoire is
     signal data_out_ecriture : std_logic_vector(31 downto 0);
     signal read_in_mem : std_logic_vector(31 downto 0);
 begin
-    read_in_mem <= banc_reg(to_integer(unsigned(adress(31 downto 2))));
+    read_in_mem <= banc_reg(to_integer(unsigned(adress(31 downto 0))));
     U1 : entity work.Port_Lecture port map(adress => adress, Read_in => read_in_mem,
          ReadMem_W => ReadMem_W, ReadMem_SH => ReadMem_SH, ReadMem_UH => ReadMem_UH,
          ReadMem_SB => ReadMem_SB, ReadMem_UB => ReadMem_UB, Read_out => read_out);
@@ -167,7 +167,7 @@ begin
     process(clk)
     begin
         if (rising_edge(clk) and init = '0' and WE = '0') then 
-            banc_reg(to_integer(unsigned(adress(31 downto 2)))) <= data_out_ecriture;
+            banc_reg(to_integer(unsigned(adress(31 downto 0)))) <= data_out_ecriture;
         end if;
 
     end process;

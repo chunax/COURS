@@ -1,0 +1,187 @@
+$date
+  Thu Dec  9 16:01:54 2021
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module numeric_std $end
+$upscope $end
+$scope module bus_mux_pkg $end
+$upscope $end
+$scope module test_memoire $end
+$var reg 32 ! s_adress[31:0] $end
+$var reg 32 " s_data_in[31:0] $end
+$var reg 32 # s_current_mem[31:0] $end
+$var reg 32 $ s_data_out[31:0] $end
+$var reg 1 % s_writemem_w $end
+$var reg 1 & s_writemem_h $end
+$var reg 1 ' s_writemem_b $end
+$var reg 1 ( s_readmem_w $end
+$var reg 1 ) s_readmem_sh $end
+$var reg 1 * s_readmem_uh $end
+$var reg 1 + s_readmem_sb $end
+$var reg 1 , s_readmem_ub $end
+$var reg 1 - s_we $end
+$var reg 1 . s_oe $end
+$var reg 1 / s_clk $end
+$var reg 1 0 s_init $end
+$var reg 1 1 s_data_instr $end
+$scope module pgen2 $end
+$var reg 32 2 adress[31:0] $end
+$var reg 32 3 data_in[31:0] $end
+$var reg 1 4 readmem_w $end
+$var reg 1 5 readmem_sh $end
+$var reg 1 6 readmem_uh $end
+$var reg 1 7 readmem_sb $end
+$var reg 1 8 readmem_ub $end
+$var reg 1 9 writemem_w $end
+$var reg 1 : writemem_h $end
+$var reg 1 ; writemem_b $end
+$var reg 1 < we $end
+$var reg 1 = oe $end
+$var reg 1 > clk $end
+$var reg 1 ? init $end
+$var reg 1 @ data_instr $end
+$var reg 32 A data_out[31:0] $end
+$comment banc_reg is not handled $end
+$var reg 32 B read_out[31:0] $end
+$var reg 32 C data_out_ecriture[31:0] $end
+$var reg 32 D read_in_mem[31:0] $end
+$scope module u1 $end
+$var reg 32 E adress[31:0] $end
+$var reg 32 F read_in[31:0] $end
+$var reg 1 G readmem_w $end
+$var reg 1 H readmem_sh $end
+$var reg 1 I readmem_uh $end
+$var reg 1 J readmem_sb $end
+$var reg 1 K readmem_ub $end
+$var reg 32 L read_out[31:0] $end
+$var reg 16 M zero_15[15:0] $end
+$var reg 24 N zero_23[23:0] $end
+$var reg 16 O ext_sh_31[15:0] $end
+$var reg 16 P ext_sh_15[15:0] $end
+$var reg 24 Q ext_sb_31[23:0] $end
+$var reg 24 R ext_sb_23[23:0] $end
+$var reg 24 S ext_sb_15[23:0] $end
+$var reg 24 T ext_sb_7[23:0] $end
+$var reg 32 U tmp_w[31:0] $end
+$var reg 32 V tmp_sh[31:0] $end
+$var reg 32 W tmp_uh[31:0] $end
+$var reg 32 X tmp_sb[31:0] $end
+$var reg 32 Y tmp_ub[31:0] $end
+$upscope $end
+$scope module u2 $end
+$var reg 32 Z adress[31:0] $end
+$var reg 32 [ data_in[31:0] $end
+$var reg 32 \ current_mem[31:0] $end
+$var reg 1 ] writemem_w $end
+$var reg 1 ^ writemem_h $end
+$var reg 1 _ writemem_b $end
+$var reg 32 ` data_out[31:0] $end
+$var reg 32 a tmp_w[31:0] $end
+$var reg 32 b tmp_h[31:0] $end
+$var reg 32 c tmp_b[31:0] $end
+$var reg 16 d tmp_currmem_31[15:0] $end
+$var reg 16 e tmp_currmem_15[15:0] $end
+$var reg 24 f tmp_sb_31[23:0] $end
+$var reg 8 g tmp_sb_23_1[7:0] $end
+$var reg 16 h tmp_sb_23_2[15:0] $end
+$var reg 16 i tmp_sb_15_1[15:0] $end
+$var reg 8 j tmp_sb_15_2[7:0] $end
+$var reg 24 k tmp_sb_7[23:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b00000000000000000000000111111100 !
+b11111111111111111111111111111111 "
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU #
+bZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ $
+1%
+0&
+0'
+0(
+0)
+0*
+0+
+0,
+0-
+1.
+0/
+00
+01
+b00000000000000000000000111111100 2
+b11111111111111111111111111111111 3
+04
+05
+06
+07
+08
+19
+0:
+0;
+0<
+1=
+0>
+0?
+0@
+bZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ A
+bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX B
+b11111111111111111111111111111111 C
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU D
+b00000000000000000000000111111100 E
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU F
+0G
+0H
+0I
+0J
+0K
+bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX L
+b0000000000000000 M
+b000000000000000000000000 N
+bUUUUUUUUUUUUUUUU O
+bUUUUUUUUUUUUUUUU P
+bUUUUUUUUUUUUUUUUUUUUUUUU Q
+bUUUUUUUUUUUUUUUUUUUUUUUU R
+bUUUUUUUUUUUUUUUUUUUUUUUU S
+bUUUUUUUUUUUUUUUUUUUUUUUU T
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU U
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU V
+b0000000000000000UUUUUUUUUUUUUUUU W
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU X
+b000000000000000000000000UUUUUUUU Y
+b00000000000000000000000111111100 Z
+b11111111111111111111111111111111 [
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU \
+1]
+0^
+0_
+b11111111111111111111111111111111 `
+b11111111111111111111111111111111 a
+bUUUUUUUUUUUUUUUU1111111111111111 b
+bUUUUUUUUUUUUUUUUUUUUUUUU11111111 c
+bUUUUUUUUUUUUUUUU d
+bUUUUUUUUUUUUUUUU e
+bUUUUUUUUUUUUUUUUUUUUUUUU f
+bUUUUUUUU g
+bUUUUUUUUUUUUUUUU h
+bUUUUUUUUUUUUUUUU i
+bUUUUUUUU j
+bUUUUUUUUUUUUUUUUUUUUUUUU k
+#5000000
+1/
+1>
+#10000000
+1(
+14
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU B
+1G
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU L
