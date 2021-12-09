@@ -206,7 +206,13 @@ def receive():
     try:
         s.bind(('', my_port))
     except socket.error as e:
-        print("Erreur écoute sur le port de base")
+        try:
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            s.bind(('', my_port))
+        except socket.error as e:
+            s.close()
+            print("Erreur écoute sur le port de base")
+            return
     s.listen(2)
     try:
         client, addr = s.accept()
@@ -229,6 +235,8 @@ def receive():
     print(rec)
     payload = json.loads(rec)
     traitementPayload(payload)
+    s.close()
+    
 
 
 
