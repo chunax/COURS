@@ -22,7 +22,16 @@ is_first = False
 
 def send(data, ip, port):
     connexion_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    connexion_serveur.connect((ip, port))
+    try:
+        connexion_serveur.connect((ip, port))
+    except socket.error as e:
+        try:
+            connexion_serveur.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            connexion_serveur.connect((ip, port))
+        except socket.error as e:
+            print("Erreur send")
+            connexion_serveur.close()
+            return
     connexion_serveur.send(bytes(json.dumps(data),"utf-8"))
     connexion_serveur.close()
 
@@ -210,8 +219,8 @@ def receive():
             s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             s.bind(('', my_port))
         except socket.error as e:
-            s.close()
             print("Erreur écoute sur le port de base")
+            s.close()
             return
     s.listen(2)
     try:
