@@ -10,7 +10,6 @@ BUFFER_SIZE = 2048
 
 nbGet = 0
 nbPut = 0
-nbJoin = 0
 nbGestion = 0
 
 table_voisinage = {"precedent" : [],"suivant" : []}
@@ -19,6 +18,8 @@ my_key = None
 my_ip = None
 my_port = None
 is_first = False
+quit = False
+firstQuit = True
 
 def send(data, ip, port):
     connexion_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -87,12 +88,12 @@ def creation_data(key):
     return new_data
 
 def gestionJoin(payload):
-    global my_key, table_voisinage, is_first
-    '''key = payload["key"]
-    get_resp(key, payload["ip"], payload["port"])'''
+    global my_key, table_voisinage, is_first,nbGestion
+    nbGestion += 1
     if payload["key"] == my_key:
         print("reject sent")
         jsonFrame = { "type" : "reject", "key" : payload["key"] }
+        nbGestion += 1
         send(jsonFrame, payload["ip"], payload["port"])
     elif is_between(payload["key"]) or is_first:
         print("accept et init")
@@ -111,31 +112,40 @@ def gestionJoin(payload):
         print("ma table")
         print(table_voisinage)
         is_first = False
+        nbGestion += 1
         send(jsonInitFrame, payload["ip"], payload["port"])
 
     else:
         print("envoie au précedent")
         print(payload)
+        nbGestion += 1
         send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
 
 
 def gestionPut(payload):
+    global nbPut, nbGestion
+    nbPut += 1
     if payload["key"] == my_key:
         data[my_key] = payload["val"]
         jsonFrame = {"type" : "ack", "ok": "ok", "idUniq" : payload["idUniq"]}
+        nbGestion += 1
         send(jsonFrame, payload["ip"], payload["port"])
     elif is_between(payload["key"]):
         data[payload["key"]] = payload["val"]
         print(data)
         jsonFrame = {"type" : "ack", "ok": "ok", "idUniq" : payload["idUniq"]}
+        nbGestion += 1
         send(jsonFrame, payload["ip"], payload["port"])
     else:
         print("envoie au précedent")
         print(payload)
+        nbPut += 1
         send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
 
 
 def gestionGet(payload):
+    global nbGet,nbGestion
+    nbGet += 1
     if payload["key"] == my_key:
         val = None
         for cle, valeur in data.items():
@@ -143,6 +153,7 @@ def gestionGet(payload):
                 val = valeur
                 break
         jsonFrame = {"type" : "answer", "key" : my_key, "val" : val}
+        nbGestion += 1
         send(jsonFrame, payload["ip"], payload["port"])
     elif is_between(payload["key"]):
         val = None
@@ -151,15 +162,19 @@ def gestionGet(payload):
                 val = valeur
                 break
         jsonFrame = {"type" : "answer", "key" : payload["key"], "val" : val}
+        nbGestion += 1
         send(jsonFrame, payload["ip"], payload["port"])
     
     else:
         print("envoie au précedent")
         print(payload)
+        nbGet += 1
         send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
 
     
 def gestionNew(payload):
+    global nbGestion
+    nbGestion += 1
     if is_between_suivant(payload["key"]):
         table_voisinage["suivant"][0] = payload["key"]
         table_voisinage["suivant"][1] = payload["ip"]
@@ -173,8 +188,30 @@ def gestionNew(payload):
     elif payload["key"] == my_key:
         pass
     else:
+        nbGestion += 1
         send(payload, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
 
+def gestionQuit(payload):
+    global firstQuit, nbGestion, nbGet, nbPut
+    if payload["msgGet"] == 0 and payload["msgPut"] == 0 and payload["msgGest"] == 0:
+        jsonQuit = {"type" : "quit", "msgGet" : nbGet, "msgPut" : nbPut, "msgGest" : nbGestion}
+        firstQuit = False
+        send(jsonQuit,table_voisinage["precedent"][1], table_voisinage["precedent"][2])
+        return False
+    else:
+        newMsgGet = payload["msgGet"] + nbGet
+        newMsgPut = payload["msgPut"] + nbPut
+        newMsgGest = payload["msgGest"] + nbGestion
+        if firstQuit:
+            jsonQuit = {"type" : "quit", "msgGet" : newMsgGet, "msgPut" : newMsgPut, "msgGest" : newMsgGest}
+            send(jsonQuit, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
+            return True
+        else:
+            print("Total messages : ")
+            print("MsgGet : " + str(payload["msgGet"]))
+            print("MsgPut : " + str(payload["msgPut"]))
+            print("MsgGest : " + str(payload["msgGest"]))
+            return True
 
 
 def traitementPayload(payload):
@@ -182,11 +219,13 @@ def traitementPayload(payload):
     command = payload["type"]
     if command == 'join':
         gestionJoin(payload)
+        return False
     if command == 'reject':
         print("reject reçu")
         test_key = random.randint(0,65535)
         payload = {"type" : "join", "key" : test_key, "ip" : my_ip, "port" : my_port }
         send(payload, sys.argv[2], int(sys.argv[3]))
+        return False
     if command == 'init':
         print("init reçu")
         my_key = payload["key"]
@@ -198,12 +237,19 @@ def traitementPayload(payload):
         print(table_voisinage)
         jsonFrame = { "type" : "new", "key": my_key, "ip" : my_ip, "port" : my_port}
         send(jsonFrame, table_voisinage["precedent"][1], table_voisinage["precedent"][2])
+        return False
     if command == 'new':
         gestionNew(payload)
+        return False
     if command == 'put':
         gestionPut(payload)
+        return False
     if command == 'get':
         gestionGet(payload)
+        return False
+    if command == 'quit':
+        return gestionQuit(payload)
+        
 
 
 
@@ -212,6 +258,7 @@ def traitementPayload(payload):
 
 
 def receive():
+    global quit
     s      = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.bind(('', my_port))
@@ -244,14 +291,14 @@ def receive():
     print("payload reçu : ")
     print(rec)
     payload = json.loads(rec)
-    traitementPayload(payload)
+    quit = traitementPayload(payload)
     s.close()
     
 
 
 
 def main():
-    global my_port, my_ip, my_key, is_first
+    global my_port, my_ip, my_key, is_first,quit
     my_port = int(sys.argv[1])
     hostname = socket.gethostname()
     local_ip = socket.gethostbyname(hostname)
@@ -273,7 +320,7 @@ def main():
         print(test_key)
         payload = {"type" : "join", "key" : test_key, "ip" : my_ip, "port" : my_port }
         send(payload, sys.argv[2], int(sys.argv[3]))
-    while(True):
+    while(not quit):
         receive()
         print(table_voisinage)
 

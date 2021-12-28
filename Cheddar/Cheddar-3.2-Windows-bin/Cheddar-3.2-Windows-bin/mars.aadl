@@ -1,0 +1,144 @@
+
+package mars_pathfinder 
+
+public 
+
+
+  data black
+  end black;
+
+  data implementation black.Impl
+ properties 
+   Concurrency_Control_Protocol => PCP;
+  end black.Impl;
+
+
+
+  thread ordo_bus
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 125 ms;
+    Deadline => 125 ms;
+    Compute_Execution_Time => 1 ms .. 25 ms;
+    Priority => 10 ;
+  end ordo_bus;
+  thread implementation ordo_bus.Impl
+  end ordo_bus.Impl;
+
+  thread donnees
+  features
+    fe : requires data access black.Impl;
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 125 ms;
+    Deadline => 125 ms;
+    Compute_Execution_Time => 25 ms .. 25 ms;
+    Priority => 9 ;
+  end donnees;
+  thread implementation donnees.Impl
+  end donnees.Impl;
+  
+  thread pilotage
+  features
+    fe : requires data access black.Impl;
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 250 ms;
+    Deadline => 250 ms;
+    Compute_Execution_Time => 25 ms .. 25 ms;
+    Priority => 8 ;
+  end pilotage;
+  thread implementation pilotage.Impl
+  end pilotage.Impl;
+
+  thread radio
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 250 ms;
+    Deadline => 250 ms;
+    Compute_Execution_Time => 25 ms .. 25 ms;
+    Priority => 7 ;
+  end radio;
+  thread implementation radio.Impl
+  end radio.Impl;
+
+  thread camera
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 250 ms;
+    Deadline => 250 ms;
+    Compute_Execution_Time => 25 ms .. 25 ms;
+    Priority => 6 ;
+  end camera;
+  thread implementation camera.Impl
+  end camera.Impl;
+
+  thread mesure
+  features
+    fe : requires data access black.Impl;
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 5000 ms;
+    Deadline => 5000 ms;
+    Compute_Execution_Time => 50 ms .. 50 ms;
+    Priority => 5 ;
+  end mesure;
+  thread implementation mesure.Impl
+  end mesure.Impl;
+
+  thread meteo
+  features
+    fe : requires data access black.Impl;
+  properties
+    Dispatch_Protocol => Periodic;
+    Period => 5000 ms;
+    Deadline => 5000 ms;
+    Compute_Execution_Time => 50 ms .. 75 ms;
+    Priority => 4 ;
+  end meteo;
+  thread implementation meteo.Impl
+  end meteo.Impl;
+
+
+
+  process Application
+  end Application;
+
+  process implementation Application.Impl
+  subcomponents
+    ordo_bus : thread ordo_bus.Impl;
+    donnees : thread donnees.Impl;
+    pilotage : thread pilotage.Impl;
+    radio : thread radio.Impl;
+    camera : thread camera.Impl;
+    mesure : thread mesure.Impl;
+    meteo : thread meteo.Impl;
+    black  : data   black.Impl;  
+  connections
+    cx1 : data access black -> donnees.fe;
+    cx2 : data access black -> pilotage.fe;
+    cx3 : data access black -> mesure.fe;
+    cx4 : data access black -> meteo.fe;
+  end Application.Impl;
+
+
+  processor cpu
+  properties
+    Scheduling_Protocol=>(POSIX_1003_HIGHEST_PRIORITY_FIRST_PROTOCOL);
+  end cpu;
+
+  system mars
+  end mars;
+
+  system implementation mars.Impl
+  subcomponents
+    process1 : process application.Impl;
+    cpu1 : processor cpu;
+  properties
+    Actual_Processor_Binding => (reference (cpu1)) applies to process1;
+  end mars.Impl;
+
+end mars_pathfinder; 
+
+
+ 

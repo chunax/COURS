@@ -68,6 +68,10 @@ def main():
         ip = local_ip
         payload = {"type" : command, "key" : key, "ip" : ip, "port" : port }
         send(payload, sys.argv[4], int(sys.argv[5]))
+    elif sys.argv[2] == 'quit':
+        command = sys.argv[2]
+        payload = {"type" : command, "msgGet" : 0, "msgPut" : 0, "msgGest" : 0 }
+        send(payload, sys.argv[3], int(sys.argv[4]))
     while(receive()):
         print("en écoute")
     
