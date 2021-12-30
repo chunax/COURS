@@ -81,7 +81,7 @@ def is_between_suivant(key):
 def creation_data(key):
     new_data = {}
     for cle, valeur in data.items():
-        if is_between(cle):
+        if is_between(key):
             new_data[cle] = valeur
     for keys in new_data.keys():
         data.pop(keys)
